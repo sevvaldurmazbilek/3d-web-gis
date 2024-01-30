@@ -1,0 +1,53 @@
+.search {
+  position: absolute;
+  top: 20px;
+  left: 15px; 
+}
+.input-container {
+  position: relative;
+  display: inline-block;
+}
+#geocode-input,
+#geocode-button {
+  height: 40px;
+  width: 40px;
+  margin: 0 2px 0 0;
+  padding: 4px 8px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 1);
+  color: #333333;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+#geocode-input {
+  width: 300px;
+  height: 35px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 1);
+  color: #333333;
+  border: none;
+  cursor: text;
+  padding-right: 30px;
+  transition: background-color 0.3s, transform 0.1s;
+}
+#geocode-button:hover {
+  background-color: rgba(227, 224, 224, 1);
+  color: #333333;
+}
+#geocode-input:focus {
+  background-color: white;
+  outline: none;
+}
+.close-button {
+  color: #333333;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  height: 24px; 
+  width: 24px;
+}

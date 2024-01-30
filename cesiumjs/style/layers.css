@@ -1,0 +1,32 @@
+#dataToggle {
+    position: absolute;
+    top: 6px;
+    left: 430px;
+    padding: 20px;
+    border-radius: 20px;
+    flex-direction: row;
+}
+#dataToggle button {
+    background-color: rgba(255, 255, 255, 1);
+    color: #333333;
+    padding: 7px 16px;
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    height: 32px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif; 
+    font-weight: bold;
+}
+#dataToggle button:hover {
+    background-color: rgba(227, 224, 224, 1);
+    color: #333333;
+}
+#dataToggle button:active {
+    transform: translateY(2px);
+}
+#dataToggle button:last-child {
+    margin-bottom: 0;
+}

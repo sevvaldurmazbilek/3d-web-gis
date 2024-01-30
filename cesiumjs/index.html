@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+  <meta name="description" content="Explore sunny and easily accessible apartments in Munich and Helsinki with our interactive 3D WebGIS platform. Find your ideal home using detailed maps and visual guides.">
+  <title>3D Web-GIS Platform for Sunny and Accessible Homes</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.113.0/Cesium.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/suncalc@1.8.0/suncalc.min.js" defer></script>
+  <script src="https://unpkg.com/@esri/arcgis-rest-request@4.0.0/dist/bundled/request.umd.js" defer></script>
+  <script src="https://unpkg.com/@esri/arcgis-rest-geocoding@4.0.0/dist/bundled/geocoding.umd.js" defer></script>
+  <script src="dist/bundle.js" defer></script>
+  <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/cesium/1.113.0/Widgets/widgets.css');
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+  <link rel="stylesheet" href="style/viewer.css">
+  <link rel="stylesheet" href="style/time.css">
+  <link rel="stylesheet" href="style/geocoder.css">
+  <link rel="stylesheet" href="style/layers.css">
+  <link rel="stylesheet" href="style/switch.css">
+  <link rel="stylesheet" href="style/basemap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div id="cesiumContainer"></div>
+  <div id="dataToggle">
+    <button id="showGeoJson" title="Average travel times from all location to all locations">Accessibility</button>
+    <button id="show3DTiles" title="3D Building Model">3D Tiles</button>
+  </div>
+  <div class="search">
+    <div class="input-container">
+        <input id="geocode-input" type="text" placeholder="Enter an address or place" size="50" />
+        <button id="geocode-close" class="close-button" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+    <button id="geocode-button" aria-label="Search"><i class="fas fa-search"></i></button>
+  </div>
+  <div id="timeContainer">
+    <input id="dateInput" type='date' title="Change date">
+    <label id="sunrise" for="time">Sunrise</label>
+    <input id='time' type='range'/> 
+    <button id="resetTimeButton" class="reset-button" title="Reset time to now">&#8635;</button>
+    <label id="sunset" for="time">Sunset</label>
+    <div id="hour"></div>
+    <div id="current-time"></div>
+  </div>
+  <div class="switch-container">
+    <span class="label">Helsinki Demo</span>
+    <label class="switch">
+        <input type="checkbox" id="switchInput">
+        <span class="slider"></span>
+    </label>
+  </div>
+  <div class="base-map-toggle">
+    <button id="baseMapToggle" class="base-map-button" title="Select your style"></button>
+    <div id="baseMapOptions" class="base-map-options" style="display: none;">
+      <div class="base-map-button-container">
+          <button id="mapboxButton">
+              <img src="icon/mapbox-day.png" alt="Mapbox Light">
+              <span>Mapbox Light</span>
+          </button>
+      </div>
+      <div class="base-map-button-container">
+        <button id="mapboxDarkButton">
+            <img src="icon/mapbox-dark.png" alt="Mapbox Dark">
+            <span>Mapbox Dark</span>
+        </button>
+      </div>
+      <div class="base-map-button-container">
+          <button id="osmButton">
+              <img src="icon/osm.png" alt="OpenStreetMap">
+              <span>OpenStreetMap</span>
+          </button>
+      </div>
+  </div>
+  </div>
+</body>
+</html>

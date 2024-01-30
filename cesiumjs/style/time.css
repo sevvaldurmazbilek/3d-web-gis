@@ -1,0 +1,117 @@
+#timeContainer {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    right: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+    width: 475px; 
+    height: 70px;
+    background-color: rgba(81, 81, 81, 0.8);
+    border-radius: 20px;
+    backdrop-filter: blur(10px); 
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+#sunrise,
+#sunset {
+  position: absolute;
+  bottom: 20px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+} 
+#sunrise {
+  left: 30px;
+}
+
+#sunset {
+  left: 450px;
+}
+
+.reset-button {
+  position: absolute;
+  right: 120px;
+  bottom: 56px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent; 
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reset-button:hover {
+  background-color: #e3d327;}
+#time {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  background: linear-gradient(to right, #FFD700, #FF4500);
+  border-radius: 5px;
+  outline: none;
+}
+
+#time::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#time::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#dateInput {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 55px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 25%;
+  font-size: 16px;
+  line-height: 0.75;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  font-family: 'Lato', sans-serif;
+  background-color: transparent;  
+  color: rgba(255, 255, 255, 0.8);
+}
+  
+#hour {
+  color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  left: 10px;
+  right: auto;
+  bottom: 62px;
+  max-width: calc(100% - 20px);
+  padding: 5px 10px;
+  font-size: 38px;
+  line-height: 18px;
+  border-radius: 3px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}

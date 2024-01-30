@@ -1,0 +1,19 @@
+.cesium-viewer .cesium-widget-credits{
+	visibility: hidden	
+}
+#cesiumContainer{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+.cesium-popup {
+    position: absolute;
+    background-color: rgba(81, 81, 81, 0.8); 
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    pointer-events: none;  /* To prevent the popup from blocking map interaction */
+    z-index: 100;
+    color: #fff;
+}

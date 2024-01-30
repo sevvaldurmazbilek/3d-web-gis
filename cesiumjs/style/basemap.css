@@ -1,0 +1,57 @@
+.base-map-button {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 10;
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    background-image: url('/icon/layer-icon.png');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgb(0,0,0);
+}
+
+.base-map-options {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: row;
+    bottom: 10px;
+    left: 90px; 
+    z-index: 10;
+    background-color: rgb(255,255,255, 0.9);
+    border: 1px solid rgb(0,0,0);
+    padding: 10px;
+    border-radius: 20px;
+    width: 90px;
+    height: 205px;
+}
+
+.base-map-button-container button {
+    text-align: center;
+    display: flex;
+    flex-direction: column; 
+    align-items: column; 
+    width: auto;
+    border: none; 
+    background: none; 
+    padding: 0px;
+    cursor: pointer;
+}
+
+.base-map-button-container button img {
+    margin: 3px;
+    display: block;
+    max-width: 100%;
+    max-height: 40px; 
+    height: auto; 
+    margin-bottom: 5px; 
+    border-radius: 10px;
+    align-items: column;
+}
+
+.base-map-button-container button span {
+    margin-top: 5px; 
+}
+
