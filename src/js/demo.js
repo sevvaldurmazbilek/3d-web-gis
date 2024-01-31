@@ -11,6 +11,7 @@ import {geoJsonDataSource, loadGeoJsonAsset, assetId2} from './addGeoJSON.js';
 import {setCurrentLocation, updateTimeElement} from './timeUtils.js';
 import { showMunich3DTiles} from './addTiles.js';
 import { showMunichGeoJson} from './addGeoJSON.js';
+import { createLegend, hideLegend } from './addGeoJSON.js';
 
 const switchInput = document.getElementById("switchInput");
 const slider = document.querySelector(".slider");
@@ -32,11 +33,13 @@ const show3DTilesListener = async function() {
     viewer.scene.setTerrain(new Cesium.Terrain(Cesium.CesiumTerrainProvider.fromIonAssetId(1)));
     await loadHelsinkiTileset();
     geoJsonDataSource.show = false;
+    hideLegend();
 };
 
 const showGeoJsonListener = function() {
     viewer.terrainProvider = new Cesium.EllipsoidTerrainProvider();
     loadGeoJsonAsset(assetId2);
+    createLegend(assetId2);
     
     geoJsonDataSource.show = true;
     tileset.show = false;

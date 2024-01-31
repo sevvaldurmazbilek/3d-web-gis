@@ -146,10 +146,10 @@ document.getElementById('closeHelpPanel').addEventListener('click', function() {
     document.getElementById('helpPanel').style.display = 'none';
 });
 
-// To open the help panel by default when entering the platform
 window.onload = function() {
     document.getElementById('helpPanel').style.display = 'block';
 };
+
 
 viewer.scene.camera.setView(initialCameraPosition);
 export {viewer, scene, camera, dayMapbox, initialCameraPosition}; 

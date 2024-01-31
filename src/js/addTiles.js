@@ -8,6 +8,7 @@
 
 import {viewer} from './cesiumViewer.js';
 import {geoJsonDataSource} from './addGeoJSON.js';
+import { createLegend, hideLegend } from './addGeoJSON.js';
 
 let tileset1 = await Cesium.Cesium3DTileset.fromIonAssetId(2354108);
 let tileset2 = await Cesium.Cesium3DTileset.fromIonAssetId(2355120);
@@ -69,6 +70,7 @@ function checkAllTilesets() {
 function showMunich3DTiles() {
     viewer.scene.setTerrain(new Cesium.Terrain(Cesium.CesiumTerrainProvider.fromIonAssetId(1)));
     geoJsonDataSource.show = false;
+    hideLegend();
     tileset1.show = true;
     tileset2.show = true;
     tileset3.show = true;

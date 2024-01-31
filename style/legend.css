@@ -1,0 +1,28 @@
+.legend {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.legend h3 {
+    margin-top: 0;
+}
+
+.legend div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend .color-box {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px;
+}

@@ -123,6 +123,7 @@ function removePopup() {
 function showMunichGeoJson () {
     viewer.terrainProvider = new Cesium.EllipsoidTerrainProvider();
     loadGeoJsonAsset(assetId1);
+    createLegend(assetId1);
     
     geoJsonDataSource.show = true;
     tileset1.show = false;
@@ -133,6 +134,7 @@ function showMunichGeoJson () {
 
 function hideMunichGeoJson () {
     geoJsonDataSource.show = false;
+    hideLegend();
 }
 
 document.getElementById('showGeoJson').addEventListener('click', function() {
@@ -146,5 +148,46 @@ document.getElementById('showGeoJson').addEventListener('click', function() {
    
 });
 
+function createLegend(assetId) {
+    const legendContainer = document.getElementById('legend') || document.createElement('div');
+    legendContainer.id = 'legend';
+    legendContainer.innerHTML = ''; // Clear existing content
+    legendContainer.style.display = 'block'; // Show the legend
+
+    const title = document.createElement('h3');
+    title.textContent = 'Travel Time (minutes)';
+    legendContainer.appendChild(title);
+
+    const mappings = colorMappings[assetId];
+    mappings.forEach(mapping => {
+        const colorBox = document.createElement('div');
+        colorBox.style.width = '20px';
+        colorBox.style.height = '20px';
+        colorBox.style.backgroundColor = mapping.color.toCssColorString();
+        colorBox.style.display = 'inline-block';
+
+        const label = document.createElement('span');
+        label.textContent = ` <= ${mapping.threshold}`;
+        label.style.marginLeft = '5px';
+
+        const entry = document.createElement('div');
+        entry.appendChild(colorBox);
+        entry.appendChild(label);
+        legendContainer.appendChild(entry);
+    });
+
+    document.body.appendChild(legendContainer);
+}
+
+function hideLegend() {
+    const legendContainer = document.getElementById('legend');
+    if (legendContainer) {
+        legendContainer.style.display = 'none';
+    }
+}
+
+hideLegend();
+
 export {geoJsonDataSource, loadGeoJsonAsset, assetId1, assetId2};
 export {showMunichGeoJson, hideMunichGeoJson};
+export {createLegend, hideLegend};
