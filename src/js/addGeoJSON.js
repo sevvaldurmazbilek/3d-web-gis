@@ -17,6 +17,14 @@ var currentAssetId = null;
 var geoJsonDataSource = new Cesium.GeoJsonDataSource();
 var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
 
+var globalStats = {
+    averageTravelTime: 0,
+    maxTravelTime: 0,
+    minTravelTime: Infinity,
+    totalRegions: 0
+};
+var globalEntities = [];
+
 geoJsonDataSource.show = false;
 
 const colorMappings = {
@@ -24,13 +32,13 @@ const colorMappings = {
         { threshold: 38, color: Cesium.Color.fromCssColorString('rgba(173, 216, 230, 0.6)') },
         { threshold: 44, color: Cesium.Color.fromCssColorString('rgba(135, 206, 250, 0.6)') },
         { threshold: 51, color: Cesium.Color.fromCssColorString('rgba(70, 130, 180, 0.6)') },
-        { threshold: Infinity, color: Cesium.Color.fromCssColorString('rgba(0, 0, 139, 0.6)') }
+        { threshold: 76, color: Cesium.Color.fromCssColorString('rgba(0, 0, 139, 0.6)') }
     ],
     2441944: [
         { threshold: 27, color: Cesium.Color.fromCssColorString('rgba(173, 216, 230, 0.6)') },
         { threshold: 33, color: Cesium.Color.fromCssColorString('rgba(135, 206, 250, 0.6)') },
         { threshold: 39, color: Cesium.Color.fromCssColorString('rgba(70, 130, 180, 0.6)') },
-        { threshold: Infinity, color: Cesium.Color.fromCssColorString('rgba(0, 0, 139, 0.6)') }
+        { threshold: 61, color: Cesium.Color.fromCssColorString('rgba(0, 0, 139, 0.6)') }
     ]
 };
 
@@ -57,7 +65,24 @@ function loadGeoJsonAsset(assetId) {
                 var travelTime = entity.properties.travel_time.getValue(); 
                 entity.polygon.material = getColorByTravelTime(travelTime, assetId);
             }
+            globalEntities = dataSource.entities.values; 
+            calculateStatistics(dataSource);
         });
+}
+
+function calculateStatistics(dataSource) {
+    var totalTravelTime = 0;
+    var entities = dataSource.entities.values;
+
+    for (var i = 0; i < entities.length; i++) {
+        var travelTime = entities[i].properties.travel_time.getValue();
+        totalTravelTime += travelTime;
+        globalStats.maxTravelTime = Math.max(globalStats.maxTravelTime, travelTime);
+        globalStats.minTravelTime = Math.min(globalStats.minTravelTime, travelTime);
+    }
+
+    globalStats.totalRegions = entities.length;
+    globalStats.averageTravelTime = totalTravelTime / entities.length;
 }
 
 function getColorByTravelTime(travelTime, assetId) {
@@ -85,7 +110,16 @@ handler.setInputAction(function (clickEvent) {
         if (travelTime !== undefined) {
             var screenPosition = Cesium.SceneTransforms.wgs84ToWindowCoordinates(viewer.scene, earthPosition);
             if (screenPosition) {
-                showPopup(screenPosition, `Travel Time: ${travelTime} minutes`);
+                var deviationFromAverage = travelTime - globalStats.averageTravelTime;
+                var message;
+                if (Math.abs(deviationFromAverage) < 5) {
+                    message = `Travel Time: ${travelTime} minutes, which is close to the average travel time across all regions.`;
+                } else if (deviationFromAverage > 0) {
+                    message = `Travel Time: ${travelTime} minutes. This is ${deviationFromAverage.toFixed(2)} minutes more than the average travel time.`;
+                } else {
+                    message = `Travel Time: ${travelTime} minutes. This is ${Math.abs(deviationFromAverage).toFixed(2)} minutes less than the average travel time.`;
+                }
+                showPopup(screenPosition, message);
             }
         }
     }
@@ -110,7 +144,7 @@ function showPopup(screenPosition, message) {
             document.body.removeChild(popupDiv);
             currentPopup = null;
         }
-    }, 3000);
+    }, 4000);
 }
 
 function removePopup() {
@@ -151,11 +185,11 @@ document.getElementById('showGeoJson').addEventListener('click', function() {
 function createLegend(assetId) {
     const legendContainer = document.getElementById('legend') || document.createElement('div');
     legendContainer.id = 'legend';
-    legendContainer.innerHTML = ''; // Clear existing content
-    legendContainer.style.display = 'block'; // Show the legend
+    legendContainer.innerHTML = ''; 
+    legendContainer.style.display = 'block'; 
 
     const title = document.createElement('h3');
-    title.textContent = 'Travel Time (minutes)';
+    title.textContent = 'Average travel time (minutes)';
     legendContainer.appendChild(title);
 
     const mappings = colorMappings[assetId];
