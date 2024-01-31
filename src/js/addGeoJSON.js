@@ -115,9 +115,9 @@ handler.setInputAction(function (clickEvent) {
                 if (Math.abs(deviationFromAverage) < 5) {
                     message = `Travel Time: ${travelTime} minutes, which is close to the average travel time across all regions.`;
                 } else if (deviationFromAverage > 0) {
-                    message = `Travel Time: ${travelTime} minutes. This is ${deviationFromAverage.toFixed(2)} minutes more than the average travel time.`;
+                    message = `Travel Time: ${travelTime} minutes. This is ${deviationFromAverage.toFixed(0)} minutes more than the average travel time.`;
                 } else {
-                    message = `Travel Time: ${travelTime} minutes. This is ${Math.abs(deviationFromAverage).toFixed(2)} minutes less than the average travel time.`;
+                    message = `Travel Time: ${travelTime} minutes. This is ${Math.abs(deviationFromAverage).toFixed(0)} minutes less than the average travel time.`;
                 }
                 showPopup(screenPosition, message);
             }
