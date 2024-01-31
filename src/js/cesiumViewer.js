@@ -29,7 +29,8 @@ const viewer = new Cesium.Viewer('cesiumContainer', {
     shadows: true,
     requestRenderMode : true, //*Optimization* Enable requestRenderMode to reduce the overall amount of time Cesium renders a new frame and to decrease Cesium’s overall CPU usage in your application.
     maximumRenderTimeChange : Infinity,
-    geocoder : false
+    geocoder : false,
+    fullscreenButton: false,
 });
 
 var scene = viewer.scene;

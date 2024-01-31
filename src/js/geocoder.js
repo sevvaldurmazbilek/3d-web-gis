@@ -27,7 +27,7 @@ function findAddress(query) {
     .then((response) => {
         const result = response.candidates[0];
         if (!result === 0) {
-            alert("That query didn't match any geocoding results.");
+            alert("Sorry, we could not find any place matching your search.");
             return;
         }
 
@@ -49,7 +49,7 @@ function findAddress(query) {
     })
 
     .catch((error) => {
-        alert("There was a problem using the geocoder. See the console for details.");
+        alert("Please type an address or place.");
         console.error(error);
     });
 }
