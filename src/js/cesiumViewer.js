@@ -39,7 +39,7 @@ let timeoutId = null;
 let isPanelClicked = false; 
 
 
-viewer.scene.shadowMap.softShadows = true;
+scene.shadowMap.softShadows = true;
 viewer.scene.shadowMap.size = 8192;
 viewer.scene.globe.tileCacheSize = 1000;
 
@@ -143,6 +143,10 @@ document.getElementById('helpButton').addEventListener('click', function() {
 });
 
 document.getElementById('closeHelpPanel').addEventListener('click', function() {
+    document.getElementById('helpPanel').style.display = 'none';
+});
+
+document.getElementById('closeHelpPanel2').addEventListener('click', function() {
     document.getElementById('helpPanel').style.display = 'none';
 });
 
