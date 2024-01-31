@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isPanelClicked) {
             timeoutId = setTimeout(() => {
                 baseMapOptions.style.display = 'none';
-            }, 2500);
+            }, 250);
         }
     });
 
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isPanelClicked) {
             timeoutId = setTimeout(() => {
                 baseMapOptions.style.display = 'none';
-            }, 2500);
+            }, 250);
         }
     });
 

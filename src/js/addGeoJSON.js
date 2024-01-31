@@ -2,15 +2,15 @@
  * Filename: addGeoJSON.js
  * Project: Exploring Sunny and Easily Accessible Homes: A 3D-Web-GIS Platform for Apartment Seekers in Munich and Helsinki
  * Author: Sevval Durmazbilek (sevvaldurmazbilek@gmail.com)
- * Last Modified: 2024-01-21
+ * Last Modified: 2024-01-31
  * Description: Addition of GeoJSON data source in CesiumJS for accessibility maps with coloring data, popup information and handlers. 
 */
 
 import {viewer} from './cesiumViewer.js';
 import { tileset1, tileset2, tileset3 } from './addTiles.js';
 
-const assetId1 = 2404394;
-const assetId2 = 2428423;
+const assetId1 = 2441945;
+const assetId2 = 2441944;
 let currentPopup = null;
 
 var currentAssetId = null;
@@ -20,16 +20,16 @@ var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
 geoJsonDataSource.show = false;
 
 const colorMappings = {
-    2404394: [
+    2441945: [
         { threshold: 38, color: Cesium.Color.fromCssColorString('rgba(173, 216, 230, 0.6)') },
-        { threshold: 43, color: Cesium.Color.fromCssColorString('rgba(135, 206, 250, 0.6)') },
-        { threshold: 50, color: Cesium.Color.fromCssColorString('rgba(70, 130, 180, 0.6)') },
+        { threshold: 44, color: Cesium.Color.fromCssColorString('rgba(135, 206, 250, 0.6)') },
+        { threshold: 51, color: Cesium.Color.fromCssColorString('rgba(70, 130, 180, 0.6)') },
         { threshold: Infinity, color: Cesium.Color.fromCssColorString('rgba(0, 0, 139, 0.6)') }
     ],
-    2428423: [
-        { threshold: 21, color: Cesium.Color.fromCssColorString('rgba(173, 216, 230, 0.6)') },
-        { threshold: 23, color: Cesium.Color.fromCssColorString('rgba(135, 206, 250, 0.6)') },
-        { threshold: 30, color: Cesium.Color.fromCssColorString('rgba(70, 130, 180, 0.6)') },
+    2441944: [
+        { threshold: 27, color: Cesium.Color.fromCssColorString('rgba(173, 216, 230, 0.6)') },
+        { threshold: 33, color: Cesium.Color.fromCssColorString('rgba(135, 206, 250, 0.6)') },
+        { threshold: 39, color: Cesium.Color.fromCssColorString('rgba(70, 130, 180, 0.6)') },
         { threshold: Infinity, color: Cesium.Color.fromCssColorString('rgba(0, 0, 139, 0.6)') }
     ]
 };
