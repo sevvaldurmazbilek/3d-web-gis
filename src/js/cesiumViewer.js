@@ -146,10 +146,6 @@ document.getElementById('closeHelpPanel').addEventListener('click', function() {
     document.getElementById('helpPanel').style.display = 'none';
 });
 
-document.getElementById('closeHelpPanel2').addEventListener('click', function() {
-    document.getElementById('helpPanel').style.display = 'none';
-});
-
 window.onload = function() {
     document.getElementById('helpPanel').style.display = 'block';
 };
