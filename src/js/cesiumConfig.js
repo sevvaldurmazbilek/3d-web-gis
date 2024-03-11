@@ -7,15 +7,15 @@
 */
 
 // CesiumJS Access Token
-Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1ZjMxZDlmMi02OWJhLTRmNDktOGYzMS1jOGI2ZjMyNTdjZWIiLCJpZCI6MTU1MzY4LCJpYXQiOjE2ODk4NjI5NDh9.YNMT-peUxrLscF3gaV6D0zvZtym2LiHWTG1hirDmye4";
+Cesium.Ion.defaultAccessToken = ""; //add your Cesium access token here. 
 
 // API Key for ArcGIS Service. In this application, it is used for ArcGIS Geocoder. 
-const apiKey = "AAPKbf16cbf5f8ee42d5a5b263bd6d99dbd4FaqKLEgIkliUtWsu6rjQVH74O4ZeEA71wnKMmAyvbtjm6D-XDNwBAleaO-jVtTmH";
+const apiKey = ""; //add your ArcGIS access token here. 
 Cesium.ArcGisMapService.defaultAccessToken = apiKey;
 const authentication = arcgisRest.ApiKeyManager.fromKey(apiKey);
 
 // Mapbox Access Token for basemaps 
-const mapbox = "pk.eyJ1IjoiZHVybWF6YmlsZWsiLCJhIjoiY2xyajhkbmsyMDB1MjJqbnd6bTN2MThhdiJ9.KbEp3Swka-jg7zKhR0NABg";
+const mapbox = ""; //add your Mapbox access token here. 
 
 export {mapbox, authentication}; 
 

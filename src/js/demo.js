@@ -67,16 +67,15 @@ switchInput.addEventListener("change", function() {
                 roll: 0.0
             },
             duration: 3.0,
-        });
-        
+        }); // camera settings for the location
         viewer.scene.globe.depthTestAgainstTerrain = true;
      
         show3DTilesListener().then(() => {
-        });
+        }); //addition of default 3D tiles in Helsinki
         
-        updateButtonBehavior();
+        updateButtonBehavior(); // function to adapt data toggle for helsinki
         setCurrentLocation('helsinki');
-        updateTimeElement();     
+        updateTimeElement(); // update time element     
 
     } else {
         slider.classList.remove("on");

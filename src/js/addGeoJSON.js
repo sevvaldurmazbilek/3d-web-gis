@@ -9,8 +9,8 @@
 import {viewer} from './cesiumViewer.js';
 import { tileset1, tileset2, tileset3 } from './addTiles.js';
 
-const assetId1 = 2441945;
-const assetId2 = 2441944;
+const assetId1 = 123456; //add your asset ID 
+const assetId2 = 123456; //add your asset ID 
 let currentPopup = null;
 
 var currentAssetId = null;
@@ -28,13 +28,13 @@ var globalEntities = [];
 geoJsonDataSource.show = false;
 
 const colorMappings = {
-    2441945: [
+    123456: [ //assetID here
         { threshold: 38, color: Cesium.Color.fromCssColorString('rgba(173, 216, 230, 0.6)') },
         { threshold: 44, color: Cesium.Color.fromCssColorString('rgba(135, 206, 250, 0.6)') },
         { threshold: 51, color: Cesium.Color.fromCssColorString('rgba(70, 130, 180, 0.6)') },
         { threshold: 76, color: Cesium.Color.fromCssColorString('rgba(0, 0, 139, 0.6)') }
     ],
-    2441944: [
+    123456: [ //assetID here
         { threshold: 27, color: Cesium.Color.fromCssColorString('rgba(173, 216, 230, 0.6)') },
         { threshold: 33, color: Cesium.Color.fromCssColorString('rgba(135, 206, 250, 0.6)') },
         { threshold: 39, color: Cesium.Color.fromCssColorString('rgba(70, 130, 180, 0.6)') },
@@ -172,7 +172,7 @@ function hideMunichGeoJson () {
 }
 
 document.getElementById('showGeoJson').addEventListener('click', function() {
-    viewer.terrainProvider = new Cesium.EllipsoidTerrainProvider();
+    viewer.terrainProvider = new Cesium.EllipsoidTerrainProvider(); // cesium flat surface
     loadGeoJsonAsset(assetId1);
     
     geoJsonDataSource.show = true;

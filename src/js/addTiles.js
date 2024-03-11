@@ -10,15 +10,15 @@ import {viewer} from './cesiumViewer.js';
 import {geoJsonDataSource} from './addGeoJSON.js';
 import { createLegend, hideLegend } from './addGeoJSON.js';
 
-let tileset1 = await Cesium.Cesium3DTileset.fromIonAssetId(2354108);
-let tileset2 = await Cesium.Cesium3DTileset.fromIonAssetId(2355120);
-let tileset3 = await Cesium.Cesium3DTileset.fromIonAssetId(2355413);
+let tileset1 = await Cesium.Cesium3DTileset.fromIonAssetId(); // add your assetID for the 3D tiles
+let tileset2 = await Cesium.Cesium3DTileset.fromIonAssetId(); // add your assetID for the 3D tiles
+let tileset3 = await Cesium.Cesium3DTileset.fromIonAssetId(); // add your assetID for the 3D tiles
 var readyTilesetsCount = 0;
 
 Promise.all([
-    Cesium.Cesium3DTileset.fromIonAssetId(2354108),
-    Cesium.Cesium3DTileset.fromIonAssetId(2355120),
-    Cesium.Cesium3DTileset.fromIonAssetId(2355413)
+    Cesium.Cesium3DTileset.fromIonAssetId(), // add your assetID for the 3D tiles
+    Cesium.Cesium3DTileset.fromIonAssetId(), // add your assetID for the 3D tiles
+    Cesium.Cesium3DTileset.fromIonAssetId() // add your assetID for the 3D tiles
 ]).then(([ts1, ts2, ts3]) => {
     tileset1 = ts1;
     tileset2 = ts2;
